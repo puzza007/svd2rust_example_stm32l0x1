@@ -10,14 +10,7 @@ cortex-m = "0.5.8"
 cortex-m-rt = "0.6.5"
 cortex-m-semihosting = "0.3.2"
 panic-halt = "0.2.0"
-
-# Local STM32L0x1 Peripheral Access Crate.
-# This is un-modified / un-cleaned / un-tested output from svd2rust,
-# so I don't want to put it on crates.io yet in case anyone tries to use it.
-[dependencies.stm32l0x1]
-path = "./svd_lib/stm32l0x1"
-features = ["rt"]
-version = "0.0.1"
+stm32l0 = { version = "0.14.0", features = ["stm32l0x1", "rt"] }
 
 # this lets you use `cargo fix`!
 [[bin]]

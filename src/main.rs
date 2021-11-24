@@ -7,7 +7,7 @@ extern crate panic_halt;
 // Includes.
 use cortex_m::peripheral::syst::SystClkSource;
 use cortex_m_rt::entry;
-use stm32l0x1;
+use stm32l0::stm32l0x1;
 
 #[entry]
 fn main() -> ! {
@@ -24,7 +24,7 @@ fn main() -> ! {
   let rcc = p.RCC;
   rcc.iopenr.write( |w| w.iopben().set_bit() );
   let gpiob = p.GPIOB;
-  unsafe { gpiob.moder.write( |w| w.mode3().bits( 0x01 ) ); }
+  gpiob.moder.write( |w| w.mode3().bits( 0x01 ) );
   gpiob.otyper.write( |w| w.ot3().clear_bit() );
 
   // Restart the SysTick counter.
